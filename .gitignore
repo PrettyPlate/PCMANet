@@ -1,0 +1,17 @@
+.idea
+
+pretrained_backbones/*
+!pretrained_backbones/readme.txt
+
+**/test_logs/*
+**/train_logs/*
+
+*.png
+*.json
+*_Baseline.py
+visualize_*
+best.txt
+example.txt
+cal_*.py
+macs params.py
+mask curve.py
