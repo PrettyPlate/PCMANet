@@ -107,7 +107,7 @@ class AVGA(nn.Module):
             nn.BatchNorm2d(channel),
             nn.ReLU()
         )
-        self.fc1 = nn.Sequential(
+        self.fc = nn.Sequential(
             nn.Linear(channel, channel),
             nn.Linear(channel, channel // head),
             nn.ReLU()
@@ -116,7 +116,7 @@ class AVGA(nn.Module):
     def forward(self, x, a):
         b, c, h, w = x.shape
         x = self.seq1(x)
-        a = self.fc1(a)
+        a = self.fc(a)
         a = vec2mat(a, h, w)
         x_list = torch.chunk(x, chunks=self.head, dim=1)
         x_n2_list = [F.normalize(_, p=2, dim=1) for _ in x_list]
@@ -140,7 +140,7 @@ class PCMANet(nn.Module):
         self.conv3 = nn.Sequential(nn.Conv2d(320, channel, (3, 3), padding=1), nn.BatchNorm2d(channel), nn.ReLU())
         self.conv2 = nn.Sequential(nn.Conv2d(128, channel, (3, 3), padding=1), nn.BatchNorm2d(channel), nn.ReLU())
         self.conv1 = nn.Sequential(nn.Conv2d(64, channel, (3, 3), padding=1), nn.BatchNorm2d(channel), nn.ReLU())
-        self.aud_fc1 = nn.Linear(128, channel)
+        self.aud_fc = nn.Linear(128, channel)
 
         head = 8
         self.avga4 = AVGA(channel, head)
@@ -212,7 +212,7 @@ class PCMANet(nn.Module):
         conv2_feat = self.conv2(x2)  # BF x 256 x 28 x 28
         conv3_feat = self.conv3(x3)  # BF x 256 x 14 x 14
         conv4_feat = self.conv4(x4)  # BF x 256 x  7 x  7
-        audio = self.aud_fc1(audio)  # aud [BF, 256]
+        audio = self.aud_fc(audio)  # aud [BF, 256]
 
         o4 = self.avga4(conv4_feat, audio)
         o3 = self.avga3(conv3_feat, audio)

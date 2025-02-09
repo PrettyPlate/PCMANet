@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--test_batch_size", default=1, type=int)
     parser.add_argument("--num_workers", default=8, type=int)
-    parser.add_argument("--weights", default='./train_logs/S4_res_Model_FinalModel/checkpoints/S4_best.pth',
+    parser.add_argument("--weights", default='./train_logs/S4_res_Model_Final/checkpoints/S4_best.pth',
                         type=str)
     parser.add_argument("--save_pred_mask", action='store_true', default=True, help="save predited masks or not")
     parser.add_argument('--log_dir', default='./test_logs', type=str)
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     # Logs
     prefix = args.session_name
     # log_dir = os.path.join(args.log_dir, '{}'.format(time.strftime(prefix + '_%Y%m%d-%H%M%S')))
-    log_dir = os.path.join(args.log_dir, f'{prefix}_{args.visual_backbone[:3].lower()}_Modelyx_Final')
+    log_dir = os.path.join(args.log_dir, f'{prefix}_{args.visual_backbone[:3].lower()}_Model_Final')
     args.log_dir = log_dir
 
     # Save scripts

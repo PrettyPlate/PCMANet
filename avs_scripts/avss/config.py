@@ -16,13 +16,13 @@ cfg.NUM_CLASSES = 71 # 70 + 1 background
 cfg.TRAIN = edict()
 
 cfg.TRAIN.FREEZE_AUDIO_EXTRACTOR = True
-cfg.TRAIN.PRETRAINED_VGGISH_MODEL_PATH = r"/cluster/home3/zjc/Code/Backbone/vggish-10086976.pth"
-cfg.TRAIN.PREPROCESS_AUDIO_TO_LOG_MEL = True #! notice
+cfg.TRAIN.PRETRAINED_VGGISH_MODEL_PATH = "../../pretrained_backbones/vggish-10086976.pth"
+cfg.TRAIN.PREPROCESS_AUDIO_TO_LOG_MEL = True  #! notice
 cfg.TRAIN.POSTPROCESS_LOG_MEL_WITH_PCA = False
-cfg.TRAIN.PRETRAINED_PCA_PARAMS_PATH = "./torchvggish/vggish_pca_params-970ea276.pth"
+cfg.TRAIN.PRETRAINED_PCA_PARAMS_PATH = "../../pretrained_backbones/vggish_pca_params-970ea276.pth"
 cfg.TRAIN.FREEZE_VISUAL_EXTRACTOR = True
-cfg.TRAIN.PRETRAINED_RESNET50_PATH = r"/cluster/home3/zjc/Code/Backbone/resnet50-19c8e357.pth"
-cfg.TRAIN.PRETRAINED_PVTV2_PATH = r"/cluster/home3/zjc/Code/Backbone/pvt_v2_b5.pth"
+cfg.TRAIN.PRETRAINED_RESNET50_PATH = "../../pretrained_backbones/resnet50-19c8e357.pth"
+cfg.TRAIN.PRETRAINED_PVTV2_PATH = "../../pretrained_backbones/pvt_v2_b5.pth"
 
 cfg.TRAIN.FINE_TUNE_SSSS = False
 cfg.TRAIN.PRETRAINED_S4_AVS_WO_TPAVI_PATH = "../single_source_scripts/logs/ssss_20220118-111301/checkpoints/checkpoint_29.pth.tar"

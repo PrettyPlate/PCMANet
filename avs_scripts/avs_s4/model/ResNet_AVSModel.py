@@ -127,7 +127,7 @@ class AVGA(nn.Module):
         x = [p * q for p, q in zip(att, x_list)]
         x = torch.cat(x, dim=1)
 
-        return self.seq2(x), att
+        return self.seq2(x)
 
 
 class PCMANet(nn.Module):
@@ -144,7 +144,7 @@ class PCMANet(nn.Module):
         self.conv1 = nn.Sequential(nn.Conv2d(256, channel, (3, 3), padding=1), nn.BatchNorm2d(channel), nn.ReLU())
         self.aud_fc1 = nn.Linear(128, channel)
 
-        head = 8
+        head = 4
         self.avga4 = AVGA(channel, head)
         self.avga3 = AVGA(channel, head)
         self.avga2 = AVGA(channel, head)

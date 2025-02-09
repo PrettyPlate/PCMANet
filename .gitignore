@@ -1,5 +1,8 @@
 .idea
 
+avsbench_data/
+!avsbench_data/readme.md
+
 pretrained_backbones/*
 !pretrained_backbones/readme.txt
 

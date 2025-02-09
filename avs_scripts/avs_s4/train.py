@@ -39,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument("--val_batch_size", default=1, type=int)
     parser.add_argument("--max_epoches", default=15, type=int)
     parser.add_argument("--lr", default=0.0001, type=float)
-    parser.add_argument("--num_workers", default=0, type=int)
+    parser.add_argument("--num_workers", default=8, type=int)
 
     parser.add_argument("--resume_from", type=str, default='', help='path of trained model')
     parser.add_argument('--log_dir', default='./train_logs', type=str)
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     # Logs
     prefix = args.session_name
     # log_dir = os.path.join(args.log_dir, '{}'.format(time.strftime(prefix + '_%Y%m%d-%H%M%S')))
-    log_dir = os.path.join(args.log_dir, f'{prefix}_{(args.visual_backbone).lower()[:3]}_Model_Final')
+    log_dir = os.path.join(args.log_dir, f'{prefix}_{args.visual_backbone.lower()[:3]}_Model_Final')
     args.log_dir = log_dir
 
     # Save scripts
